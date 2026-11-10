@@ -1,0 +1,55 @@
+:root {
+  --bg: #f6f7f9; --fg: #15181d; --muted: #5b6370; --card: #fff; --line: #d8dce2;
+  --accent: #1a62d6; --ok: #137a3a; --err: #b3261e; --busy: #8a5a00;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111317; --fg: #eceef1; --muted: #9aa3ae; --card: #1b1e24; --line: #30353d;
+    --accent: #6ea2ff; --ok: #5fd08a; --err: #ff8a80; --busy: #f0c060;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto; max-width: 560px; padding: 16px 16px 32px;
+  font: 18px/1.45 system-ui, sans-serif; background: var(--bg); color: var(--fg);
+}
+h1 { font-size: 1.5rem; margin: 0; }
+.hint { color: var(--muted); margin: 4px 0 16px; font-size: .9rem; }
+
+.banner {
+  padding: 14px; border-radius: 10px; font-weight: 600;
+  background: color-mix(in srgb, var(--err) 15%, transparent); color: var(--err);
+}
+
+button, select, textarea { font: inherit; color: inherit; }
+button { min-height: 56px; border-radius: 12px; border: 1px solid var(--line); cursor: pointer; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.primary { width: 100%; background: var(--accent); color: #fff; border: 0; font-weight: 700; font-size: 1.15rem; }
+.secondary { background: var(--card); padding: 0 20px; }
+
+[role=tablist] { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+[role=tab] { background: var(--card); font-weight: 600; }
+[role=tab][aria-selected=true] { border: 2px solid var(--accent); color: var(--accent); }
+
+.status-row { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; }
+#status {
+  flex: 1; margin: 0; padding: 14px; min-height: 56px; border-radius: 12px;
+  background: var(--card); border: 1px solid var(--line); font-weight: 600;
+}
+#status.ok { color: var(--ok); } #status.err { color: var(--err); } #status.busy { color: var(--busy); }
+
+label { display: block; font-weight: 600; margin: 12px 0 6px; }
+select, textarea {
+  width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card);
+}
+select { min-height: 56px; }
+textarea { resize: vertical; font-family: ui-monospace, monospace; font-size: 16px; }
+form .primary { margin-top: 16px; }
+
+#result { margin-top: 16px; }
+.serial { color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
+.record { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-top: 8px; }
+.record .type { font-size: .8rem; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+.record pre { margin: 6px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .95rem; }

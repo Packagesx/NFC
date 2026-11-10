@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>NFC Tag Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>NFC Tag Tool</h1>
+    <p class="hint">Reads &amp; writes NDEF tags (e.g. NTAG213/215/216 stickers).</p>
+  </header>
+
+  <p id="unsupported" class="banner" hidden>
+    Web NFC isn't supported on this browser/device. Use Chrome on Android.
+  </p>
+
+  <nav role="tablist">
+    <button role="tab" id="tab-read" aria-controls="read" aria-selected="true">Read</button>
+    <button role="tab" id="tab-write" aria-controls="write" aria-selected="false">Write</button>
+  </nav>
+
+  <div class="status-row">
+    <p id="status" role="status" aria-live="polite">Ready to scan</p>
+    <button id="cancel" class="secondary" hidden>Cancel</button>
+  </div>
+
+  <main>
+    <section id="read" role="tabpanel" aria-labelledby="tab-read">
+      <button id="scan" class="primary">Scan Tag</button>
+      <div id="result"></div>
+    </section>
+
+    <section id="write" role="tabpanel" aria-labelledby="tab-write" hidden>
+      <form id="write-form">
+        <label for="type">Record type</label>
+        <select id="type">
+          <option value="text">Plain Text</option>
+          <option value="url">URL</option>
+          <option value="wifi">Wi-Fi-style text</option>
+          <option value="vcard">vCard</option>
+        </select>
+
+        <label for="content">Content</label>
+        <textarea id="content" rows="6" autocapitalize="off" spellcheck="false"></textarea>
+
+        <button id="write-btn" class="primary" type="submit">Write to Tag</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
